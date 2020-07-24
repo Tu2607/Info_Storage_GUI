@@ -24,16 +24,16 @@ class Database {
 
         // This if/else is for testing
         if (myFile.createNewFile()) {
-            System.out.println("File created");
+            System.out.println("Created");
         } else {
-            System.out.println("File existed");
+            System.out.println("Existed");
         }
 
         //map.entrySet().stream().forEach(entry -> System.out.println(entry.getKey()));
         map.entrySet().stream().forEach(entry -> {
             try {
                 FileWriter file = new FileWriter(myFile, true);
-                file.write(entry.getKey() + ":" + Integer.toString(entry.getValue()));
+                file.write(entry.getKey() + ":" + Integer.toString(entry.getValue()) + System.lineSeparator());
                 file.close();
             } catch (IOException e) {
                 e.printStackTrace();
