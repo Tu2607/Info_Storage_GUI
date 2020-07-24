@@ -29,7 +29,6 @@ class Database {
             System.out.println("Existed");
         }
 
-        //map.entrySet().stream().forEach(entry -> System.out.println(entry.getKey()));
         map.entrySet().stream().forEach(entry -> {
             try {
                 FileWriter file = new FileWriter(myFile, true);
