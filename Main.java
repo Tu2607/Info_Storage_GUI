@@ -33,7 +33,7 @@ public class Main extends Application {
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10.0);
         grid.setVgap(10.0);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        grid.setPadding(new Insets(15, 15, 15, 15));
 
         Text sceneTitle = new Text("Enter your information");
         sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
