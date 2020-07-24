@@ -37,7 +37,7 @@ public class Main extends Application {
 
         Text sceneTitle = new Text("Enter your information");
         sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(sceneTitle, 0, 0, 2, 1);
+        grid.add(sceneTitle, 0, 0, 3, 1);
 
         Label name = new Label("Name: ");
         grid.add(name, 0, 1);
@@ -63,9 +63,15 @@ public class Main extends Application {
 
         Button write = new Button("Write");
         HBox writeBox = new HBox();
-        writeBox.setAlignment(Pos.BOTTOM_LEFT);
+        writeBox.setAlignment(Pos.BOTTOM_CENTER);
         writeBox.getChildren().add(write);
         grid.add(writeBox, 0, 4);
+
+        Button search = new Button("Search");
+        HBox searchBox = new HBox();
+        searchBox.setAlignment(Pos.BOTTOM_RIGHT);
+        searchBox.getChildren().add(search);
+        grid.add(searchBox,1,5);
 
         // Implementing the EventHandler for button
         button.setOnAction(new EventHandler<ActionEvent>() {
@@ -91,6 +97,9 @@ public class Main extends Application {
                 }
             } 
         });
+
+        //Test calling the display function
+        search.setOnAction(e -> Window.display(base, nameText.getText()));
 
         Scene scene = new Scene(grid, 400, 400);
         primarystage.setScene(scene);

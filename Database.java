@@ -6,6 +6,8 @@ class Database {
 
     Database() {
         map = new HashMap<>();
+        //May add in the functionality of reading from external file
+        //to populate the database
     }
 
     // Could as more check for variable typing
@@ -38,5 +40,17 @@ class Database {
                 e.printStackTrace();
             }
         });
+    }
+
+    public List<String> search(String name){
+        List<String> result = new ArrayList<String>();
+        map.entrySet().stream().forEach(entry -> {
+            if(entry.getKey().equals(name)){
+                String str = entry.getKey() + "," + entry.getValue();
+                result.add(str);
+            }
+        }
+        );
+        return result;
     }
 }
