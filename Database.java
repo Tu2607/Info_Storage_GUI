@@ -6,24 +6,27 @@ class Database {
 
     Database() {
         map = new HashMap<>();
-        //May add in the functionality of reading from external file
-        //to populate the database
+        // May add in the functionality of reading from external file
+        // to populate the database
     }
 
-    // Could as more check for variable typing
-    public boolean Insert(String name, Integer age) {
+    public void Insert(String name, Integer age) {
         try {
-            map.put(name, age);
-            return true;
+            if (name instanceof String && age instanceof Integer) {
+                map.put(name, age);
+                Window.alertBox(1);
+            } else {
+                Window.alertBox(0);
+            }
+
         } catch (Exception e) {
             System.out.print("Can't add to map");
-            return false;
         }
     }
 
     public void writeOut() throws IOException {
         File myFile = new File("data.txt");
-
+        FileWriter file = new FileWriter(myFile, true);
         // This if/else is for testing
         if (myFile.createNewFile()) {
             System.out.println("Created");
@@ -33,13 +36,14 @@ class Database {
 
         map.entrySet().stream().forEach(entry -> {
             try {
-                FileWriter file = new FileWriter(myFile, true);
                 file.write(entry.getKey() + ":" + Integer.toString(entry.getValue()) + System.lineSeparator());
-                file.close();
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                Window.alertBox(2);
             }
         });
+        file.close();
     }
 
     public List<String> search(String name){

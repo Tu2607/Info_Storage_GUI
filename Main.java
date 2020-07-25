@@ -15,7 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-
 public class Main extends Application {
 
     public static void main(String argv[]) {
@@ -52,8 +51,10 @@ public class Main extends Application {
         grid.add(ageText, 1, 2);
 
         // Testing purpose of grabbing strings
+        /*
         Label lbl = new Label();
         grid.add(lbl, 0, 5);
+        */
 
         Button button = new Button("Submit");
         HBox buttonBox = new HBox();
@@ -79,11 +80,7 @@ public class Main extends Application {
             public void handle(ActionEvent e) {
                 String name = nameText.getText();
                 Integer age = Integer.parseInt(ageText.getText());
-                if (base.Insert(name, age)) {
-                    lbl.setText("Inserted");
-                } else {
-                    lbl.setText("Failed");
-                }
+                base.Insert(name, age);
             }
         });
 
