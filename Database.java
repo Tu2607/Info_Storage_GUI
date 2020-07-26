@@ -13,12 +13,11 @@ class Database {
     public void Insert(String name, Integer age) {
         try {
             if (name instanceof String && age instanceof Integer) {
-                map.put(name, age);
+                this.map.put(name, age);
                 Window.alertBox(1);
             } else {
                 Window.alertBox(0);
             }
-
         } catch (Exception e) {
             System.out.print("Can't add to map");
         }
@@ -46,15 +45,15 @@ class Database {
         file.close();
     }
 
-    public List<String> search(String name){
+    public List<String> search(String name) {
         List<String> result = new ArrayList<String>();
+
         map.entrySet().stream().forEach(entry -> {
             if(entry.getKey().equals(name)){
                 String str = entry.getKey() + "," + entry.getValue();
                 result.add(str);
             }
-        }
-        );
+        });
         return result;
     }
 }
